@@ -1,9 +1,40 @@
 # HelioBot 3.0 🤖
 **LLM-Powered College Recommendation Chatbot using RAG**
 
-> Stack: FastAPI + ChromaDB + Groq (Llama 3.3) + Sentence Transformers
+> Stack: FastAPI · ChromaDB · Groq (Llama 3.3) · Sentence Transformers
+
+🔗 **Live Demo:** https://heliobotv3.netlify.app
 
 ---
+
+## ✨ Features
+
+- 🧠 **RAG Pipeline** — retrieves real JoSAA college cutoff data before every answer
+- 💬 **Conversation Memory** — remembers rank, branch, category and name across messages
+- 🎯 **Smart Grouping** — colleges grouped as Safe / Moderate / Dream based on your rank
+- 🔍 **Metadata Filtering** — ChromaDB filters colleges within your realistic rank range
+- 🃏 **Card UI** — college results shown as clean interactive cards
+---
+
+
+## 🔁 How It Works
+
+```
+User Message
+     ↓
+FastAPI receives request + session ID
+     ↓
+Conversation memory loaded for this session
+     ↓
+ChromaDB metadata-filtered retrieval (rank range)
+     ↓
+Groq API → Llama 3.3 generates answer
+     ↓
+Safe / Moderate / Dream cards displayed
+```
+
+---
+
 
 ## 📁 Project Structure
 ```
@@ -21,69 +52,24 @@ heliobot-v3/
 ```
 
 ---
+## 🌐 Deployment
 
-## ⚙️ Setup (Windows)
-
-### Step 1 — Clone & Setup
-```bash
-mkdir heliobot-v3
-cd heliobot-v3
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
-```
-
-### Step 2 — Add your data
-```
-Copy 2022.csv into the data/ folder
-```
-
-### Step 3 — Get FREE Groq API Key
-1. Go to https://console.groq.com
-2. Sign up (free, no credit card)
-3. Create API Key
-4. Copy it
-
-### Step 4 — Setup .env
-```
-Copy .env.example to .env
-Add your Groq API key
-```
-```env
-GROQ_API_KEY=gsk_your_key_here
-```
-
-### Step 5 — Ingest Data (Run ONCE)
-```bash
-python ingest.py
-```
-This creates the `chroma_db/` folder with all embeddings.
-⏱️ Takes ~2-5 minutes first time.
-
-### Step 6 — Start Backend
-```bash
-uvicorn main:app --reload
-```
-Backend runs at: http://localhost:8000
-
-### Step 7 — Open Frontend
-Open `frontend/index.html` in browser
-(Or deploy to Netlify)
+| Layer | Platform | URL |
+|---|---|---|
+| Backend | Render (free) | https://heliobot-v3.onrender.com |
+| Frontend | Netlify (free) | https://heliobotv3.netlify.app |
 
 ---
 
-## 🌐 Deploy to Render (Free)
+## 🛠️ Tech Stack
 
-1. Push to GitHub
-2. Go to https://render.com → New Web Service
-3. Connect your GitHub repo
-4. Set:
-   - Build Command: `pip install -r requirements.txt && python ingest.py`
-   - Start Command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
-5. Add Environment Variable: `GROQ_API_KEY = your_key`
-6. Deploy!
-
-After deploying, update `API_URL` in `frontend/index.html` with your Render URL.
+| Layer | Technology |
+|---|---|
+| LLM | Llama 3.3 70B via Groq API |
+| Embeddings | sentence-transformers/all-MiniLM-L6-v2 |
+| Vector DB | ChromaDB |
+| Backend | FastAPI + Uvicorn |
+| Frontend | HTML + CSS + Vanilla JS |
 
 ---
 
