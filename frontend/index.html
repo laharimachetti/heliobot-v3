@@ -426,6 +426,7 @@ Ask me about ranks, branches, or colleges and I'll help you explore your options
 <script>
 
 const API_URL="https://heliobot-v3.onrender.com";
+const SESSION_ID = "session_" + Math.random().toString(36).substr(2, 9); // ← ADD THIS LINE
 
 const chatBox=document.getElementById("chatBox")
 const userInput=document.getElementById("userInput")
