@@ -16,7 +16,7 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://heliobotv3.netlify.app/"],  # Change to your Netlify URL after deploying
+    allow_origins=["https://heliobotv3.netlify.app"],  # Change to your Netlify URL after deploying
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
