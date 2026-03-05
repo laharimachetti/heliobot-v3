@@ -140,4 +140,4 @@ Important: Use rank and branch from our conversation history if already provided
         return answer
 
     except Exception as e:
-        return f"Oops, something went wrong! 😅 Please try again. ({str(e)})"
+        return f"Oops, something went wrong! 😅 Please try again in a few hours."
