@@ -33,7 +33,7 @@ class ChatResponse(BaseModel):
 def root():
     return {"status": "HelioBot 3.0 is running 🚀", "version": "3.0.0"}
 
-@app.get("/health")
+@app.api_route("/health", methods=["GET", "HEAD"])
 def health():
     return {"status": "healthy"}
 
