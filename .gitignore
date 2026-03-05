@@ -1,6 +1,9 @@
 # Environment variables
 .env
 
+# ChromaDB vector database
+chroma_db/
+
 # Python cache
 __pycache__/
 *.pyc
