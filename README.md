@@ -1,3 +1,12 @@
+---
+title: Heliobot V3
+emoji: 🤖
+colorFrom: blue
+colorTo: green
+sdk: docker
+pinned: false
+---
+
 # HelioBot 3.0 🤖
 **LLM-Powered College Recommendation Chatbot using RAG**
 
@@ -36,27 +45,28 @@ Safe / Moderate / Dream cards displayed
 ---
 
 
+
 ## 📁 Project Structure
 ```
 heliobot-v3/
 ├── data/
-│   └── 2022.csv          ← Put your dataset here
-├── chroma_db/            ← Auto-created after ingestion
-├── ingest.py             ← Run ONCE to load data
+│   └── 2022.csv          ← Dataset
+├── chroma_db/            ← Auto-created during Docker build
+├── ingest.py             ← Runs automatically in Docker
 ├── rag_chain.py          ← RAG pipeline
 ├── main.py               ← FastAPI backend
+├── Dockerfile            ← Docker configuration
 ├── requirements.txt
 ├── .env                  ← Your API keys
 └── frontend/
     └── index.html        ← Deploy on Netlify
 ```
-
 ---
 ## 🌐 Deployment
 
 | Layer | Platform | URL |
 |---|---|---|
-| Backend | Render (free) | https://heliobot-v3.onrender.com |
+| Backend | HuggingFace Spaces (Docker) | https://lahi04-heliobot-v3.hf.space |
 | Frontend | Netlify (free) | https://heliobotv3.netlify.app |
 
 ---
@@ -69,6 +79,7 @@ heliobot-v3/
 | Embeddings | sentence-transformers/all-MiniLM-L6-v2 |
 | Vector DB | ChromaDB |
 | Backend | FastAPI + Uvicorn |
+| Container | Docker |
 | Frontend | HTML + CSS + Vanilla JS |
 
 ---
